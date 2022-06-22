@@ -8,21 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		5785F6812863BAAC000194BB /* CollectathonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6802863BAAC000194BB /* CollectathonApp.swift */; };
-		5785F6832863BAAC000194BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6822863BAAC000194BB /* ContentView.swift */; };
 		5785F6852863BAAE000194BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5785F6842863BAAE000194BB /* Assets.xcassets */; };
 		5785F6882863BAAE000194BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5785F6872863BAAE000194BB /* Preview Assets.xcassets */; };
 		5785F68A2863BAAE000194BB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6892863BAAE000194BB /* Persistence.swift */; };
 		5785F68D2863BAAE000194BB /* Collectathon.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5785F68B2863BAAE000194BB /* Collectathon.xcdatamodeld */; };
+		5785F6C62863BAD9000194BB /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F69E2863BAD8000194BB /* AddView.swift */; };
+		5785F6C72863BAD9000194BB /* GameDiscInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F69F2863BAD8000194BB /* GameDiscInput.swift */; };
+		5785F6C82863BAD9000194BB /* DiscInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A02863BAD8000194BB /* DiscInput.swift */; };
+		5785F6C92863BAD9000194BB /* MovieInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A12863BAD8000194BB /* MovieInput.swift */; };
+		5785F6CA2863BAD9000194BB /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A32863BAD8000194BB /* GameView.swift */; };
+		5785F6CB2863BAD9000194BB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A42863BAD8000194BB /* SettingsView.swift */; };
+		5785F6CC2863BAD9000194BB /* Featured.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A52863BAD8000194BB /* Featured.swift */; };
+		5785F6CD2863BAD9000194BB /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A62863BAD8000194BB /* MovieView.swift */; };
+		5785F6CE2863BAD9000194BB /* TVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A72863BAD8000194BB /* TVView.swift */; };
+		5785F6CF2863BAD9000194BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A92863BAD8000194BB /* ContentView.swift */; };
+		5785F6D02863BAD9000194BB /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6AA2863BAD8000194BB /* HomeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5785F67D2863BAAC000194BB /* Collectathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collectathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5785F6802863BAAC000194BB /* CollectathonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectathonApp.swift; sourceTree = "<group>"; };
-		5785F6822863BAAC000194BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5785F6842863BAAE000194BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5785F6872863BAAE000194BB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5785F6892863BAAE000194BB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		5785F68C2863BAAE000194BB /* Collectathon.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Collectathon.xcdatamodel; sourceTree = "<group>"; };
+		5785F69E2863BAD8000194BB /* AddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		5785F69F2863BAD8000194BB /* GameDiscInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDiscInput.swift; sourceTree = "<group>"; };
+		5785F6A02863BAD8000194BB /* DiscInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscInput.swift; sourceTree = "<group>"; };
+		5785F6A12863BAD8000194BB /* MovieInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInput.swift; sourceTree = "<group>"; };
+		5785F6A32863BAD8000194BB /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		5785F6A42863BAD8000194BB /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5785F6A52863BAD8000194BB /* Featured.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Featured.swift; sourceTree = "<group>"; };
+		5785F6A62863BAD8000194BB /* MovieView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
+		5785F6A72863BAD8000194BB /* TVView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVView.swift; sourceTree = "<group>"; };
+		5785F6A92863BAD8000194BB /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5785F6AA2863BAD8000194BB /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +75,8 @@
 		5785F67F2863BAAC000194BB /* Collectathon */ = {
 			isa = PBXGroup;
 			children = (
+				5785F69C2863BAD8000194BB /* Views */,
 				5785F6802863BAAC000194BB /* CollectathonApp.swift */,
-				5785F6822863BAAC000194BB /* ContentView.swift */,
 				5785F6842863BAAE000194BB /* Assets.xcassets */,
 				5785F6892863BAAE000194BB /* Persistence.swift */,
 				5785F68B2863BAAE000194BB /* Collectathon.xcdatamodeld */,
@@ -71,6 +91,48 @@
 				5785F6872863BAAE000194BB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5785F69C2863BAD8000194BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5785F69D2863BAD8000194BB /* Input Views */,
+				5785F6A22863BAD8000194BB /* Tabs */,
+				5785F6A82863BAD8000194BB /* Example View */,
+				5785F6AA2863BAD8000194BB /* HomeScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5785F69D2863BAD8000194BB /* Input Views */ = {
+			isa = PBXGroup;
+			children = (
+				5785F69E2863BAD8000194BB /* AddView.swift */,
+				5785F69F2863BAD8000194BB /* GameDiscInput.swift */,
+				5785F6A02863BAD8000194BB /* DiscInput.swift */,
+				5785F6A12863BAD8000194BB /* MovieInput.swift */,
+			);
+			path = "Input Views";
+			sourceTree = "<group>";
+		};
+		5785F6A22863BAD8000194BB /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				5785F6A32863BAD8000194BB /* GameView.swift */,
+				5785F6A42863BAD8000194BB /* SettingsView.swift */,
+				5785F6A52863BAD8000194BB /* Featured.swift */,
+				5785F6A62863BAD8000194BB /* MovieView.swift */,
+				5785F6A72863BAD8000194BB /* TVView.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		5785F6A82863BAD8000194BB /* Example View */ = {
+			isa = PBXGroup;
+			children = (
+				5785F6A92863BAD8000194BB /* ContentView.swift */,
+			);
+			path = "Example View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +205,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5785F6C92863BAD9000194BB /* MovieInput.swift in Sources */,
+				5785F6CF2863BAD9000194BB /* ContentView.swift in Sources */,
+				5785F6D02863BAD9000194BB /* HomeScreen.swift in Sources */,
 				5785F68A2863BAAE000194BB /* Persistence.swift in Sources */,
+				5785F6CE2863BAD9000194BB /* TVView.swift in Sources */,
+				5785F6CB2863BAD9000194BB /* SettingsView.swift in Sources */,
 				5785F68D2863BAAE000194BB /* Collectathon.xcdatamodeld in Sources */,
-				5785F6832863BAAC000194BB /* ContentView.swift in Sources */,
+				5785F6C72863BAD9000194BB /* GameDiscInput.swift in Sources */,
+				5785F6CC2863BAD9000194BB /* Featured.swift in Sources */,
+				5785F6CD2863BAD9000194BB /* MovieView.swift in Sources */,
+				5785F6C62863BAD9000194BB /* AddView.swift in Sources */,
 				5785F6812863BAAC000194BB /* CollectathonApp.swift in Sources */,
+				5785F6CA2863BAD9000194BB /* GameView.swift in Sources */,
+				5785F6C82863BAD9000194BB /* DiscInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  Collectathon
+//  Catalog_v2
 //
-//  Created by Chris Kay on 22/06/2022.
+//  Created by Chris Kay on 21/06/2022.
 //
 
 import SwiftUI
