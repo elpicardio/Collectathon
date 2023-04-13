@@ -1,12 +1,5 @@
-//
-//  AddView.swift
-//  CoreData_SwiftUI
-//
-//  Created by Anmol Maheshwari on 10/05/20.
-//  Copyright © 2020 Anmol Maheshwari. All rights reserved.
-//
-
 import SwiftUI
+import CoreData
 
 struct AddView: View {
     @Environment(\.managedObjectContext) var moc
@@ -15,9 +8,12 @@ struct AddView: View {
     
     @State private var mediaTitle = ""
     @State private var mediaType = ""
+    @State private var discFormat = ""
     @State private var isAlert = false
+    @State var tmdbURL = String()
     
     private let mediaTypes = ["Movie", "TV Show", "Game"]
+    private let discTypes = ["4K Blu-ray", "Blu-ray", "DVD"]
     
     var body: some View {
         NavigationView {
@@ -28,39 +24,50 @@ struct AddView: View {
                     Picker("Select media type", selection: $mediaType) {
                         ForEach(mediaTypes, id: \.self) { mediaType in
                             Text(mediaType)
+
+                            //Toggle("Do you own this?", isOn: $owned)
+                    
                         }
                     }
+                    Picker("Select disk type", selection: $discFormat) {
+                        ForEach(discTypes, id: \.self) { discType in
+                            Text(discType)
+                            }
+                        }
                 }
-                if mediaType == "Movie" || mediaType == "TV Show" {
-                    Section (header: Text("Disc Information")) {
-                        DiscInput()
-                    }
-
-                }
-                else if mediaType == "Game" {
-                    Section (header: Text("Disc Information")) {
-                        GameDiscInput()
-                    }
-                }
+//                if mediaType == "Movie" || mediaType == "TV Show" {
+//                    Section (header: Text("Disc Information")) {
+//                        DiscInput()
+//                    }
+//
+//                }
+//                else if mediaType == "Game" {
+//                    Section (header: Text("Disc Information")) {
+//                        GameDiscInput()
+//                    }
+//                }
                 
-                if mediaType == "Film" {
-                    Section (header: Text("Film Information")) {
-                        MovieInput()
-                    }
-                }
+//                if mediaType == "Movie" {
+//                    Section (header: Text("Movie Information")) {
+//                        MovieInput()
+//                    }
+//                }
                 
                 Button ("Add item") {
                     if self.mediaTitle == "" ||
-                        self.mediaType == "" {
+                        self.mediaType == "" ||
+                        self.discFormat == "" {
                         self.isAlert = true
                         return
                     }
-                    //let userInfo = FilmMedia(context: self.moc)
-                    //userInfo.firstName = self.firstName
-                    //userInfo.lastName = self.lastName
-                    //userInfo.gender = self.gender
+                    let coreDB = Entity(context: self.moc)
+                    coreDB.id = UUID()
+                    coreDB.name = self.mediaTitle
+                    coreDB.type = self.mediaType
+                    coreDB.format = self.discFormat
                     do {
                         try self.moc.save()
+                        dismiss()
                     } catch {
                         print("whoops \(error.localizedDescription)")
                     }
@@ -69,7 +76,7 @@ struct AddView: View {
                     Alert(title: Text("Whoops!"), message: Text("No text field should be empty"), dismissButton: .default(Text("Ok")))
                 }
             }
-            .navigationBarTitle(Text("Add new item"))
+            .navigationBarTitle(Text("Add a new item"))
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     Button("Cancel"){
@@ -79,6 +86,26 @@ struct AddView: View {
             }
         }
     }
+    
+//    func fetchAPI() {
+//        let searchTMDBURL = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=7856de5fd6187cc38bc2626114538662&language=en-US&query=")
+//        
+//        URLSession.shared.dataTask(with: searchTMDBURL!) { data, response, error in
+//            if let data = data {
+//                if let tmdbDecoder = try? JSONDecoder().decode(TMDBStructure.self, from: data) {
+//                    self.tmdbURL = tmdbDecoder.results.original_title
+//                }
+//            }
+//        }
+//    }
+}
+
+struct TMDBStructure: Decodable {
+    let object: dataStructure
+}
+
+struct dataStructure: Decodable {
+    let original_title: String
 }
 
 #if DEBUG

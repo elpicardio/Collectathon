@@ -15,8 +15,7 @@ struct CollectathonApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeScreen()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            HomeScreen().environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
         .onChange(of: scenePhase) { _ in
             persistenceController.save()

@@ -13,9 +13,9 @@ struct GameView: View {
     @Environment(\.colorScheme) var colorScheme
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Entity.id, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<Entity>
     @State private var showingSheet = false
     
     var body: some View {

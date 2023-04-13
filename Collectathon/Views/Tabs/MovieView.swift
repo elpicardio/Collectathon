@@ -9,48 +9,72 @@ import SwiftUI
 import CoreData
 
 struct MovieView: View {
+    
+    //@FetchRequest(sortDescriptors: []) private var loadedMedia: FetchedResults<Entity>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Entity.name, ascending: true)]) var fetchRequest: FetchedResults<Entity>
+    @FetchRequest(entity: Entity.entity(),sortDescriptors: [
+        NSSortDescriptor(keyPath: \Entity.id, ascending: true),
+        NSSortDescriptor(keyPath: \Entity.name, ascending: true)
+    ]) private var movies: FetchedResults<Entity>
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.editMode) private var editMode
+    @Environment(\.managedObjectContext) var moc
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @State private var mediaTypeFilter = "Movie"
     @State private var showingSheet = false
+    @State var selectKeeper = Set<String>()
+    @State private var queryString = ""
+    
     
     var body: some View {
         
         NavigationView {
             List {
-                Text("Movies will go here")
-                Text("Like this")
-                Text("Thor: Ragnarok (Example)")
+                ForEach(fetchRequest) { item in
+                    NavigationLink(destination: MediaDetail(title: item.name!, mediaType: item.type!, format: item.format!), label: {
+                        Text(item.name ?? "No movies have been added")
+                    })
+                }
+                .onDelete(perform: deleteMovie)
+                
             }
             .navigationTitle("Movies")
+//            .searchable(text: $queryString) // 1
+            .navigationBarItems(trailing: EditButton())
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {showingSheet.toggle()}
-                label: {
-                    Image(systemName: "plus")
-                    Text("New item")
-                }
-                        .buttonStyle(.bordered)
-                        .sheet(isPresented: $showingSheet) {
-                            AddView()
+                    label: {Image(systemName: "plus")}
+                    .buttonStyle(.bordered)
+                    .sheet(isPresented: $showingSheet) {
+                        AddView()
+                            .environment(\.managedObjectContext, self.moc)
                         }
+                    }
                 }
-                }
-                    
-                
-            
+            }
         }
+    
+    init(filter: String) {
+        _fetchRequest = FetchRequest<Entity>(sortDescriptors: [NSSortDescriptor(keyPath: \Entity.name, ascending: true)], predicate: NSPredicate(format: "type BEGINSWITH %@", mediaTypeFilter))
     }
-
+    
+    
+    func deleteMovie(at offsets: IndexSet) {
+        for offset in offsets {
+            let movie = movies[offset]
+            moc.delete(movie)
+        }
+        
+        try? moc.save()
+    }
 }
 
-struct MovieView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieView()
-            .preferredColorScheme(.dark)
-    }
-}
+//struct MovieView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MovieView()
+//            //.environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            .preferredColorScheme(.dark)
+//    }
+//}

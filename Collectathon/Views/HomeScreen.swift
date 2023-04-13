@@ -11,34 +11,31 @@ import CoreData
 struct HomeScreen: View {
     
     @Environment(\.colorScheme) var colorScheme
+    //@FetchRequest(sortDescriptors: []) var loadedMedia: FetchedResults<MyDiscs>
+    //@Environment(\.managedObjectContext) var moc
     
     var body: some View {
         TabView {
-            Featured()
+            HomeView()
                 .tabItem{
-                    Image(systemName: "star")
-                    Text("Featured")
+                    Image(systemName: "house")
+                    Text("Home")
                 }
-           MovieView()
-             .tabItem {
-                Image(systemName: "film")
-                Text("Movies")
-           }
-           TVView()
-             .tabItem {
-                Image(systemName: "tv")
-                Text("TV Shows")
-          }
-            GameView()
+            MovieView(filter: "Movie")
                 .tabItem {
-                    Image(systemName: "gamecontroller")
-                    Text("Games")
+                    Image(systemName: "film")
+                    Text("Movies")
                 }
-            SettingsView()
+            TVView(filter: "TV Show")
                 .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
+                    Image(systemName: "tv")
+                    Text("TV Shows")
                 }
+//            GameView()
+//                .tabItem {
+//                    Image(systemName: "gamecontroller")
+//                    Text("Games")
+//                }
         }
         
     }
