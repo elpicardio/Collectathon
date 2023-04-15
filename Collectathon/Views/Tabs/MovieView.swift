@@ -40,13 +40,13 @@ struct MovieView: View {
                     }
 
 
+
                 }
                 .onDelete(perform: deleteMovie)
                 .navigationViewStyle(StackNavigationViewStyle())
                 
             }
             .navigationTitle("Movies")
-//            .searchable(text: $queryString) // 1
             .navigationBarItems(trailing: EditButton())
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {

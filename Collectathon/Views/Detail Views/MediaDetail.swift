@@ -126,6 +126,7 @@ class OMDBManager {
 struct MediaDetail: View {
     
     @Environment(\.managedObjectContext) private var moc
+    @Environment(\.presentationMode) var presentationMode
     @FetchRequest(sortDescriptors: []) private var loadedMedia: FetchedResults<Entity>
     
     var title = ""
@@ -144,19 +145,23 @@ struct MediaDetail: View {
     var body: some View {
         ScrollView {
             VStack {
-                MediaBackground()
+                VStack{
+                    Spacer(minLength: 0)
+                    MediaBackground()
+                }
+
                 if let imageData = posterData, let image = UIImage(data: imageData) {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(30)
                         .shadow(radius: 10)
-                        .frame(height: 250.0)
+                        .frame(height: 300.0)
                         .offset(y: -150)
                         .padding(.bottom, -150)
                 } else {
                     MediaCover()
-                        .frame(height: 250.0)
+                        .frame(height: 300.0)
                         .offset(y: -150)
                         .padding(.bottom, -150)
                 }
@@ -166,15 +171,10 @@ struct MediaDetail: View {
                     .multilineTextAlignment(.center)
                     .padding(.top)
                 Divider()
-                HStack {
-                    Text("Media Type: \(mediaType)")
-                        .font(.subheadline)
-                    
-                    Spacer()
-                    Text("Disc Format: \(format)")
-                        .font(.callout)
-                }
-                .padding()
+                Text("Media Type: \(mediaType)")
+                    .font(.subheadline)
+                Text("Disc Format: \(format)")
+                    .font(.subheadline)
                 Spacer()
                 Button("Fetch movie data") {
                     let omdbManager = OMDBManager()
@@ -189,6 +189,14 @@ struct MediaDetail: View {
                 }
             }
         }
+        .navigationBarTitle(title, displayMode: .inline)
+        .navigationBarHidden(false)
+        .navigationBarBackButtonHidden(false)
+//        .onAppear {
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                presentationMode.wrappedValue.dismiss()
+//            }
+//        }
     }
 }
 

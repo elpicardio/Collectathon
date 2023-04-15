@@ -12,13 +12,14 @@ struct MediaBackground: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
-        let height = verticalSizeClass == .regular && horizontalSizeClass == .regular ? 400.0 : 150.0
+        let height = verticalSizeClass == .regular && horizontalSizeClass == .regular ? 400.0 : 250.0
         
-        Image("ep3background")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
+        Text("No Backdrop Saved")
+            .foregroundColor(Color.red)
+            .multilineTextAlignment(.center)
             .frame(height: height)
-            .clipped()
+            .frame(maxWidth: .infinity, alignment: .top)
+            .background(.ultraThinMaterial)
     }
 }
 

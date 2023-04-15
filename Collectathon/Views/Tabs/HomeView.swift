@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State private var showingSheet = false
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                Text("Hello Collectathon")
+            }
+            .navigationTitle("Home")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {showingSheet.toggle()}
+                    label: {Image(systemName: "info.circle")}
+                    .buttonStyle(.bordered)
+                    .sheet(isPresented: $showingSheet) {
+                        SettingsView()
+                        }
+                    }
+            }
+        }
+
     }
 }
 

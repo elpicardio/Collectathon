@@ -15,7 +15,7 @@ struct SettingsView: View {
     let defaultURL = URL(string: "https://www.google.co.uk")!
     let youtubeURL = URL(string: "https://www.youtube.co.uk")!
     let githubURL = URL(string: "https://www.github.com")!
-    let movieDBURL = URL(string: "https://www.themoviedb.org")!
+    let movieDBURL = URL(string: "https://www.omdbapi.com/")!
     let twitterPersonalURL = URL(string: "https://twitter.com/thatkwistine")!
     //let somethingURL = URL(string: "website")!
     
@@ -24,14 +24,14 @@ struct SettingsView: View {
         NavigationView {
             List {
                 collectathonSection
-                //movieDBSection
+                movieDBSection
                 devSection
-                applicationSection
+                //applicationSection
             }
             .font(.headline)
             .accentColor(.blue)
             .listStyle(GroupedListStyle())
-            .navigationTitle("Settings")
+            .navigationTitle("About Collectathon")
             .toolbar() {
                 ToolbarItem(placement: .primaryAction) {
                     Button {dismiss()}
@@ -72,25 +72,25 @@ extension SettingsView {
                     
             }
             .padding(.vertical)
-            Link("View Collectathon on GitHub!", destination: githubURL)
+            //Link("View Collectathon on GitHub!", destination: githubURL)
         }
     }
     
     private var movieDBSection: some View {
-        Section(header: Text("The Movie Database")) {
+        Section(header: Text("The Open Movie Database")) {
             VStack(alignment: .leading) {
-                Image("movieDBlogo")
-                    .resizable()
-                    .frame(height:32)
-                    .scaledToFit()
-                Text("The Movie and TV Show information that is used by this app is provided by The Movie Database")
+//                Image("movieDBlogo")
+//                    .resizable()
+//                    .frame(height:32)
+//                    .scaledToFit()
+                Text("The Movie and TV Show information that is used by this app is provided by The Open Movie Database")
                     .multilineTextAlignment(.center)
                     .font(.callout)
                 
                     
             }
             .padding(.vertical)
-            Link("The Movie DB", destination: movieDBURL)
+            Link("The Open Movie Database", destination: movieDBURL)
         }
     }
     
