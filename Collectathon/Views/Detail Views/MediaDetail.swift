@@ -176,10 +176,10 @@ struct MediaDetail: View {
                 Text("Disc Format: \(format)")
                     .font(.subheadline)
                 Spacer()
-                Button("Fetch movie data") {
-                    let omdbManager = OMDBManager()
-                    omdbManager.fetchAndSavePosterImage(for: self.title, context: self.moc)
-                }
+//                Button("Fetch movie data") {
+//                    let omdbManager = OMDBManager()
+//                    omdbManager.fetchAndSavePosterImage(for: self.title, context: self.moc)
+//                }
             }
             .onAppear {
                 if let data = posterData {
@@ -190,13 +190,39 @@ struct MediaDetail: View {
             }
         }
         .navigationBarTitle(title, displayMode: .inline)
-        .navigationBarHidden(false)
-        .navigationBarBackButtonHidden(false)
-//        .onAppear {
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                presentationMode.wrappedValue.dismiss()
-//            }
-//        }
+        .toolbar {
+            ToolbarItemGroup{
+                Menu {
+                    Button(action: {
+                        let omdbManager = OMDBManager()
+                        omdbManager.fetchAndSavePosterImage(for: self.title, context: self.moc)
+                    }) {
+                        Label(
+                            title: { Text("Fetch Image") },
+                            icon: { Image(systemName: "cloud") }
+                        )
+                    }
+                    Button(action: {
+                                            toggleFavorite()
+                                        }) {
+                                            Label(
+                                                title: { Text(entity?.isFavorite ?? false ? "Remove from Favourites" : "Add to Favourites") },
+                                                icon: { Image(systemName: entity?.isFavorite ?? false ? "star.fill" : "star") }
+                                            )
+                                        }
+                } label: {
+                    Label("More", systemImage: "ellipsis")
+                }
+
+
+                }
+            }
+        }
+    private func toggleFavorite() {
+        if let entity = entity {
+            entity.isFavorite.toggle()
+            try? moc.save()
+        }
     }
 }
 

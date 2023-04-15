@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "61573B63-8BB1-4A77-A82B-F576330249BB"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "434A416C-EA5C-4ECE-A4F1-C13170C4A2E3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Collectathon/Views/Tabs/MovieView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "MovieView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "434A416C-EA5C-4ECE-A4F1-C13170C4A2E3 - 9498236e0a87f3ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Collectathon.MovieView.loadedMedia.getter : SwiftUI.FetchedResults&lt;Collectathon.MyDiscs&gt;"
+                  moduleName = "Collectathon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chriskay/Xcod/Collectathon/Collectathon/Views/Tabs/MovieView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "186">
+               </Location>
+               <Location
+                  uuid = "434A416C-EA5C-4ECE-A4F1-C13170C4A2E3 - 668806b546bf96da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Collectathon.MovieView.$loadedMedia.getter : SwiftUI.Binding&lt;SwiftUI.FetchRequest&lt;Collectathon.MyDiscs&gt;.Configuration&gt;"
+                  moduleName = "Collectathon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chriskay/Xcod/Collectathon/Collectathon/Views/Tabs/MovieView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "186">
+               </Location>
+               <Location
+                  uuid = "434A416C-EA5C-4ECE-A4F1-C13170C4A2E3 - 4f8ebbf78069e1b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Collectathon.MovieView.init() -&gt; Collectathon.MovieView"
+                  moduleName = "Collectathon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chriskay/Xcod/Collectathon/Collectathon/Views/Tabs/MovieView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "187">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

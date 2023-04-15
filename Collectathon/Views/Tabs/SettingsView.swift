@@ -27,6 +27,7 @@ struct SettingsView: View {
                 movieDBSection
                 devSection
                 //applicationSection
+//                buildinfoSection
             }
             .font(.headline)
             .accentColor(.blue)
@@ -120,5 +121,12 @@ extension SettingsView {
             Link("Learn More", destination: twitterPersonalURL)
         }
     }
+    
+    private var buildinfoSection: some View {
+        Section(header: Text("Application")) {
+            Text("App Version 0.1")
+        }
+    }
+
     
 }

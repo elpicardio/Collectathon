@@ -10,6 +10,7 @@ struct AddView: View {
     @State private var mediaType = ""
     @State private var discFormat = ""
     @State private var isAlert = false
+    @State private var isFavorite = false
     @State var tmdbURL = String()
     
     private let mediaTypes = ["Movie", "TV Show", "Game"]
@@ -71,6 +72,7 @@ struct AddView: View {
                     coreDB.name = self.mediaTitle
                     coreDB.type = self.mediaType
                     coreDB.format = self.discFormat
+                    coreDB.isFavorite = false
                     do {
                         try self.moc.save()
                         dismiss()
@@ -79,7 +81,7 @@ struct AddView: View {
                     }
                 }
                 .alert(isPresented: $isAlert) { () -> Alert in
-                    Alert(title: Text("Whoops!"), message: Text("No text field should be empty"), dismissButton: .default(Text("Ok")))
+                    Alert(title: Text("Whoops!"), message: Text("The title shouldn't be empty"), dismissButton: .default(Text("Ok")))
                 }
             }
             .navigationBarTitle(Text("Add a new item"))
@@ -92,18 +94,6 @@ struct AddView: View {
             }
         }
     }
-    
-//    func fetchAPI() {
-//        let searchTMDBURL = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=7856de5fd6187cc38bc2626114538662&language=en-US&query=")
-//        
-//        URLSession.shared.dataTask(with: searchTMDBURL!) { data, response, error in
-//            if let data = data {
-//                if let tmdbDecoder = try? JSONDecoder().decode(TMDBStructure.self, from: data) {
-//                    self.tmdbURL = tmdbDecoder.results.original_title
-//                }
-//            }
-//        }
-//    }
 }
 
 struct TMDBStructure: Decodable {

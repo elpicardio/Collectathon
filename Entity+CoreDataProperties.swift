@@ -24,6 +24,7 @@ extension Entity {
     @NSManaged public var posterPath: String?
     @NSManaged public var type: String?
     @NSManaged public var backdropData: Data?
+    @NSManaged public var isFavorite: Bool
 
 }
 

@@ -5,6 +5,7 @@
         <attribute name="format" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="idImport" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="posterData" optional="YES" attributeType="Binary"/>
         <attribute name="posterPath" optional="YES" attributeType="String"/>
