@@ -29,11 +29,17 @@ struct AddView: View {
                     
                         }
                     }
+                    .onAppear {
+                        mediaType = "Movie"
+                    }
                     Picker("Select disk type", selection: $discFormat) {
                         ForEach(discTypes, id: \.self) { discType in
                             Text(discType)
                             }
                         }
+                    .onAppear {
+                        discFormat = "4K Blu-ray"
+                    }
                 }
 //                if mediaType == "Movie" || mediaType == "TV Show" {
 //                    Section (header: Text("Disc Information")) {

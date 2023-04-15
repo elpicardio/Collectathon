@@ -32,7 +32,7 @@ struct MovieView: View {
         NavigationView {
             List {
                 ForEach(fetchRequest) { item in
-                    NavigationLink(destination: MediaDetail(title: item.name!, mediaType: item.type!, format: item.format!), label: {
+                    NavigationLink(destination: MediaDetail(title: item.name!, mediaType: item.type!, format: item.format!, posterData: item.posterData), label: {
                         Text(item.name ?? "No movies have been added")
                     })
                 }

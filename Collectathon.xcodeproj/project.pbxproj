@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5741EBCB29E9889300B3BE9E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741EBCA29E9889300B3BE9E /* HomeView.swift */; };
 		5746F1D228647FB200BF4D5E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5746F1D128647FB200BF4D5E /* Movie.swift */; };
 		5746F1E6286494BA00BF4D5E /* MovieBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5746F1E5286494BA00BF4D5E /* MovieBasicInfo.swift */; };
 		5746F1E92864B6BE00BF4D5E /* apiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5746F1E82864B6BE00BF4D5E /* apiCall.swift */; };
@@ -32,13 +33,13 @@
 		5785F6CE2863BAD9000194BB /* TVView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A72863BAD8000194BB /* TVView.swift */; };
 		5785F6CF2863BAD9000194BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6A92863BAD8000194BB /* ContentView.swift */; };
 		5785F6D02863BAD9000194BB /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6AA2863BAD8000194BB /* HomeScreen.swift */; };
-		5785F6E62863E1AA000194BB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6E52863E1AA000194BB /* HomeView.swift */; };
 		5785F6E92863EC9D000194BB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6E82863EC9C000194BB /* Model.swift */; };
 		5785F6EB2863ECC3000194BB /* APITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5785F6EA2863ECC3000194BB /* APITest.swift */; };
 		57CC772428B0304900BA52AE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57CC772328B0304900BA52AE /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5741EBCA29E9889300B3BE9E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5746F1D128647FB200BF4D5E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		5746F1E5286494BA00BF4D5E /* MovieBasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBasicInfo.swift; sourceTree = "<group>"; };
 		5746F1E82864B6BE00BF4D5E /* apiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiCall.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		5785F6A72863BAD8000194BB /* TVView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVView.swift; sourceTree = "<group>"; };
 		5785F6A92863BAD8000194BB /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5785F6AA2863BAD8000194BB /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
-		5785F6E52863E1AA000194BB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5785F6E82863EC9C000194BB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5785F6EA2863ECC3000194BB /* APITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITest.swift; sourceTree = "<group>"; };
 		57CC772328B0304900BA52AE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -198,9 +198,9 @@
 			children = (
 				5785F6A32863BAD8000194BB /* GameView.swift */,
 				5785F6A42863BAD8000194BB /* SettingsView.swift */,
-				5785F6E52863E1AA000194BB /* HomeView.swift */,
 				5785F6A62863BAD8000194BB /* MovieView.swift */,
 				5785F6A72863BAD8000194BB /* TVView.swift */,
+				5741EBCA29E9889300B3BE9E /* HomeView.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -316,6 +316,7 @@
 				5785F68D2863BAAE000194BB /* Collectathon.xcdatamodeld in Sources */,
 				5785F6C72863BAD9000194BB /* GameDiscInput.swift in Sources */,
 				5785F6EB2863ECC3000194BB /* APITest.swift in Sources */,
+				5741EBCB29E9889300B3BE9E /* HomeView.swift in Sources */,
 				5785F6E92863EC9D000194BB /* Model.swift in Sources */,
 				5785F6CD2863BAD9000194BB /* MovieView.swift in Sources */,
 				5763D4C12867631300AEE2BB /* MediaDetail.swift in Sources */,
@@ -323,7 +324,6 @@
 				5763D4BE2867570500AEE2BB /* Entity+CoreDataProperties.swift in Sources */,
 				5785F6C62863BAD9000194BB /* AddView.swift in Sources */,
 				5785F6812863BAAC000194BB /* CollectathonApp.swift in Sources */,
-				5785F6E62863E1AA000194BB /* HomeView.swift in Sources */,
 				5785F6CA2863BAD9000194BB /* GameView.swift in Sources */,
 				5785F6C82863BAD9000194BB /* DiscInput.swift in Sources */,
 				57499C8728B5447600C116B1 /* MediaCover.swift in Sources */,

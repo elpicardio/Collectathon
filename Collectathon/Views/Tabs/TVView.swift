@@ -9,13 +9,15 @@ import SwiftUI
 
 struct TVView: View {
     
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Entity.name, ascending: true)]) var fetchRequest: FetchedResults<Entity>
+    @FetchRequest(entity: Entity.entity(),sortDescriptors: [
+        NSSortDescriptor(keyPath: \Entity.id, ascending: true),
+        NSSortDescriptor(keyPath: \Entity.name, ascending: true)
+    ]) private var movies: FetchedResults<Entity>
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @Environment(\.editMode) private var editMode
+    @Environment(\.managedObjectContext) var moc
     @State private var showingSheet = false
     
     var body: some View {

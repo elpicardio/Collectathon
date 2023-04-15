@@ -26,11 +26,11 @@ struct HomeScreen: View {
                     Image(systemName: "film")
                     Text("Movies")
                 }
-            TVView(filter: "TV Show")
-                .tabItem {
-                    Image(systemName: "tv")
-                    Text("TV Shows")
-                }
+//            TVView()
+//                .tabItem {
+//                    Image(systemName: "tv")
+//                    Text("TV Shows")
+//                }
 //            GameView()
 //                .tabItem {
 //                    Image(systemName: "gamecontroller")

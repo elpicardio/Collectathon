@@ -13,4 +13,5 @@ struct myMedia {
     var type: String?
     var format: String?
     
+    
 }

@@ -20,6 +20,9 @@ extension Entity {
     @NSManaged public var name: String?
     @NSManaged public var format: String?
     @NSManaged public var type: String?
+    @NSManaged public var idImport: UUID?
+    @NSManaged public var posterPath: String?
+    @NSManaged public var posterData: Data?
     
     var wrappedMediaType: String{
         type ?? "Unknown"
