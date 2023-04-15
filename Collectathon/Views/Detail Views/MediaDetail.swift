@@ -5,24 +5,48 @@
 //  Created by Chris Kay on 25/06/2022.
 //
 
-import SwiftUI
+import Foundation
 import CoreData
+import SwiftUI
 
-struct TMDBSearchResult: Codable {
-    let results: [TMDBSearchItem]
+struct OMDBSearchResult: Codable {
+    let Search: [OMDBSearchItem]
 }
 
-struct TMDBSearchItem: Codable {
-    let id: Int
+struct OMDBSearchItem: Codable {
+    let imdbID: String
 }
 
-
-class MovieManager {
+struct OMDBMovieResult: Decodable {
+    var title: String
+    var year: String
+    var imdbID: String
+    var type: String
+    var poster: String
     
-    func getMovieID(for movieName: String, completion: @escaping (Int?) -> Void) {
-        let apiKey = "7856de5fd6187cc38bc2626114538662"
+    enum CodingKeys: String, CodingKey {
+        case title = "Title"
+        case year = "Year"
+        case imdbID
+        case type = "Type"
+        case poster = "Poster"
+    }
+}
+
+extension OMDBMovieResult: Equatable {}
+
+extension OMDBMovieResult: Identifiable {
+    var id: String { imdbID }
+}
+
+
+
+class OMDBManager {
+    
+    func getIMDbID(for movieName: String, completion: @escaping (String?) -> Void) {
+        let apiKey = "b673d699"
         let query = movieName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(query)")!
+        let url = URL(string: "https://www.omdbapi.com/?apikey=\(apiKey)&s=\(query)&type=movie")!
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
@@ -32,93 +56,141 @@ class MovieManager {
             
             do {
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(TMDBSearchResult.self, from: data)
-                let movieID = result.results.first?.id
-                completion(movieID)
+                let result = try decoder.decode(OMDBSearchResult.self, from: data)
+                let imdbID = result.Search.first?.imdbID
+                completion(imdbID)
             } catch {
-                print("Error decoding TMDB search result: \(error.localizedDescription)")
+                print("Error decoding OMDB search result: \(error.localizedDescription)")
                 completion(nil)
             }
         }.resume()
     }
 
     func fetchAndSavePosterImage(for movieName: String, context: NSManagedObjectContext) {
-        getMovieID(for: movieName) { movieID in
-            guard let movieID = movieID else { return }
+        getIMDbID(for: movieName) { imdbID in
+            guard let imdbID = imdbID else { return }
             
-            let apiKey = "7856de5fd6187cc38bc2626114538662"
-            let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieID)/images?api_key=\(apiKey)")!
+            let apiKey = "b673d699"
+            let url = URL(string: "https://www.omdbapi.com/?apikey=\(apiKey)&i=\(imdbID)")!
             
             URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data else { return }
                 
-                let item = Entity(context: context)
-                item.posterData = data
-                
                 do {
-                    try context.save()
-                    print("Image saved successfully")
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(OMDBMovieResult.self, from: data)
+                    if let posterURLString = result.poster as? String, let posterURL = URL(string: posterURLString) {
+                        let posterData = try Data(contentsOf: posterURL)
+                        let fetchRequest: NSFetchRequest<Entity> = Entity.fetchRequest()
+                        fetchRequest.predicate = NSPredicate(format: "name == %@", movieName)
+                        do {
+                            let items = try context.fetch(fetchRequest)
+                            if let item = items.first {
+                                item.posterData = posterData
+                                try context.save()
+                                if let savedPosterData = item.posterData {
+                                    print("Image saved successfully with size: \(savedPosterData.count) bytes")
+                                }
+                            } else {
+                                let item = Entity(context: context)
+                                item.name = movieName
+                                item.type = result.type
+                                item.posterData = posterData
+                                try context.save()
+                                if let savedPosterData = item.posterData {
+                                    print("Image saved successfully with size: \(savedPosterData.count) bytes")
+                                }
+                            }
+                        } catch {
+                            print("Error saving poster image: \(error.localizedDescription)")
+                        }
+                    }
                 } catch {
                     print("Error saving poster image: \(error.localizedDescription)")
                 }
             }.resume()
         }
     }
+    
+    
+
+
+
+
+
 }
+
+
 
 
 struct MediaDetail: View {
     
     @Environment(\.managedObjectContext) private var moc
     @FetchRequest(sortDescriptors: []) private var loadedMedia: FetchedResults<Entity>
-    //let context = Persistence.container.viewContext
     
     var title = ""
     var mediaType = ""
     var format = ""
     var posterData: Data?
-    //var idImport = UUID()
+    var entity: Entity?
+    
+    init(title: String, mediaType: String, format: String, posterData: Data? = nil, entity: Entity? = nil) {
+        self.title = title
+        self.mediaType = mediaType
+        self.format = format
+        self.posterData = posterData
+    }
     
     var body: some View {
-        if let imageData = posterData, let image = UIImage(data: imageData) {
-            Image(uiImage: image)
-        } else {
-            MediaCover()
-        }
-
-//                .frame(height: 250.0)
-//                .offset(y: -150)
-//                .padding(.bottom, -150)
-            Text(title)
-                .font(.title)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .padding(.top)
-            Divider()
-            HStack {
-                Text("Media Type: \(mediaType)")
-                    .font(.subheadline)
-
+        ScrollView {
+            VStack {
+                MediaBackground()
+                if let imageData = posterData, let image = UIImage(data: imageData) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(30)
+                        .shadow(radius: 10)
+                        .frame(height: 250.0)
+                        .offset(y: -150)
+                        .padding(.bottom, -150)
+                } else {
+                    MediaCover()
+                        .frame(height: 250.0)
+                        .offset(y: -150)
+                        .padding(.bottom, -150)
+                }
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding(.top)
+                Divider()
+                HStack {
+                    Text("Media Type: \(mediaType)")
+                        .font(.subheadline)
+                    
+                    Spacer()
+                    Text("Disc Format: \(format)")
+                        .font(.callout)
+                }
+                .padding()
                 Spacer()
-                Text("Disc Format: \(format)")
-                    .font(.callout)
+                Button("Fetch movie data") {
+                    let omdbManager = OMDBManager()
+                    omdbManager.fetchAndSavePosterImage(for: self.title, context: self.moc)
+                }
             }
-            .padding()
-            Text("Core Data ID is ")
-            Spacer()
-            Button("Fetch poster image") {
-                            let movieManager = MovieManager()
-                            movieManager.getMovieID(for: title) { movieID in
-                                if let movieID = movieID {
-                                    print("Movie ID for \(title): \(movieID)")
-                                    movieManager.fetchAndSavePosterImage(for: title, context: moc)
-                                } else {
-                                    print("Could not find movie ID for \(title)")
-                                }
-                            }
-                        }
+            .onAppear {
+                if let data = posterData {
+                    print("Poster data received: \(data.count) bytes")
+                } else {
+                    print("No poster data received")
+                }
+            }
         }
     }
+}
 
 
 struct MediaDetail_Previews: PreviewProvider {

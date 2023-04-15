@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5741EBCB29E9889300B3BE9E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741EBCA29E9889300B3BE9E /* HomeView.swift */; };
+		5741EBCD29EAF99E00B3BE9E /* MoviePosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5741EBCC29EAF99E00B3BE9E /* MoviePosterView.swift */; };
 		5746F1D228647FB200BF4D5E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5746F1D128647FB200BF4D5E /* Movie.swift */; };
 		5746F1E6286494BA00BF4D5E /* MovieBasicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5746F1E5286494BA00BF4D5E /* MovieBasicInfo.swift */; };
 		5746F1E92864B6BE00BF4D5E /* apiCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5746F1E82864B6BE00BF4D5E /* apiCall.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		5741EBCA29E9889300B3BE9E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5741EBCC29EAF99E00B3BE9E /* MoviePosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
 		5746F1D128647FB200BF4D5E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		5746F1E5286494BA00BF4D5E /* MovieBasicInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBasicInfo.swift; sourceTree = "<group>"; };
 		5746F1E82864B6BE00BF4D5E /* apiCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiCall.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				5785F6A62863BAD8000194BB /* MovieView.swift */,
 				5785F6A72863BAD8000194BB /* TVView.swift */,
 				5741EBCA29E9889300B3BE9E /* HomeView.swift */,
+				5741EBCC29EAF99E00B3BE9E /* MoviePosterView.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57499C8B28B5449D00C116B1 /* MediaBackground.swift in Sources */,
+				5741EBCD29EAF99E00B3BE9E /* MoviePosterView.swift in Sources */,
 				5785F6C92863BAD9000194BB /* MovieInput.swift in Sources */,
 				5785F6CF2863BAD9000194BB /* ContentView.swift in Sources */,
 				5746F1D228647FB200BF4D5E /* Movie.swift in Sources */,

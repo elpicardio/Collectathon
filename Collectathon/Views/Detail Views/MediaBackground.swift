@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct MediaBackground: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     var body: some View {
+        let height = verticalSizeClass == .regular && horizontalSizeClass == .regular ? 400.0 : 150.0
+        
         Image("ep3background")
             .resizable()
-            .aspectRatio(contentMode: .fit)
-        
+            .aspectRatio(contentMode: .fill)
+            .frame(height: height)
+            .clipped()
     }
 }
 

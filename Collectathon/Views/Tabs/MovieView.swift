@@ -32,11 +32,17 @@ struct MovieView: View {
         NavigationView {
             List {
                 ForEach(fetchRequest) { item in
-                    NavigationLink(destination: MediaDetail(title: item.name!, mediaType: item.type!, format: item.format!, posterData: item.posterData), label: {
+                    NavigationLink(destination: MediaDetail(title: item.name!, mediaType: item.type!, format: item.format!, posterData: item.posterData, entity: item)) {
                         Text(item.name ?? "No movies have been added")
-                    })
+                            .onAppear {
+                                print("name: \(item.name ?? "nil"), type: \(item.type ?? "nil"), format: \(item.format ?? "nil"), posterData size: \(item.posterData?.count ?? 0)")
+                            }
+                    }
+
+
                 }
                 .onDelete(perform: deleteMovie)
+                .navigationViewStyle(StackNavigationViewStyle())
                 
             }
             .navigationTitle("Movies")

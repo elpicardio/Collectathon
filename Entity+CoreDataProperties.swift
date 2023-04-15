@@ -2,7 +2,7 @@
 //  Entity+CoreDataProperties.swift
 //  Collectathon
 //
-//  Created by Chris Kay on 25/06/2022.
+//  Created by Christine Kay on 15/04/2023.
 //
 //
 
@@ -16,17 +16,14 @@ extension Entity {
         return NSFetchRequest<Entity>(entityName: "Entity")
     }
 
-    @NSManaged public var id: UUID?
-    @NSManaged public var name: String?
     @NSManaged public var format: String?
-    @NSManaged public var type: String?
+    @NSManaged public var id: UUID?
     @NSManaged public var idImport: UUID?
-    @NSManaged public var posterPath: String?
+    @NSManaged public var name: String?
     @NSManaged public var posterData: Data?
-    
-    var wrappedMediaType: String{
-        type ?? "Unknown"
-    }
+    @NSManaged public var posterPath: String?
+    @NSManaged public var type: String?
+    @NSManaged public var backdropData: Data?
 
 }
 
